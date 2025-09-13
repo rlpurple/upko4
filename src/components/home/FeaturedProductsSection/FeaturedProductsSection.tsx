@@ -284,7 +284,7 @@ const products = [
 ];
 
 
-const categories = ["Gift Sets", "Bondage", "Spanking", "Gags", "Fetish Wear", "Chastity"];
+const categories = ["Gift Sets", "Bondage", "Spanking", "Gags", "Fetish Wear"];
 
 // const hoverImages = [
 //   "https://www.upkoofficialshop.com/cdn/shop/files/UPKO_14_-1.jpg",

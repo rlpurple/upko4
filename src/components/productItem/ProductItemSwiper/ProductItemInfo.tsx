@@ -6,6 +6,10 @@ import { QuantityCounter } from "../../../components/QuantityCounter";
 import { addItem, toggleCart } from "../../../store/cartSlice";
 import { addToWishlist } from "../../../store/wishlistSlice";
 import { RootState } from "../../../store/store";
+import dayjs from 'dayjs';
+import advancedFormat from 'dayjs/plugin/advancedFormat.js';
+
+dayjs.extend(advancedFormat) 
 
 interface ProductItemInfoProps {
   productData: ProductData;
@@ -36,6 +40,14 @@ const ProductItemInfo: React.FC<ProductItemInfoProps> = ({ productData, onBeside
   const oldPrice = selectedBesides?.price || productData.price || "";
   const newPrice = selectedBesides?.newPrice || productData.newPrice || null;
   const discount = calculateDiscount(oldPrice, newPrice);
+
+  // вычисляем дату примерной доставки
+  const calcDate = ()=> {
+    const dayNow = dayjs();
+    const dayStart = dayNow.add(5, 'day') // минимальная доставка на 5 дней больше
+    const dayEnd = dayNow.add(14, 'day') // максимальная дата доставки через  14дней
+    return `Order in the next 18 hours 18 minutes to get it between ${dayStart.format('dddd, Do MMMM')} and <b>${dayEnd.format('dddd, Do MMMM')}</b>`
+  }
 
   const handleAddToCart = () => {
   dispatch(
@@ -134,9 +146,7 @@ const handleBesideClick = (index: number) => {
         Availability: <span>In Stock</span>
       </div>
       <div className="product-item__discount-info">Discount Auto-apply at Checkout 🛒</div>
-      <div className="product-item__delivery">
-        Order in the next 18 hours 18 minutes to get it between Friday, 16th May and <b>Wednesday, 21st May</b>
-      </div>
+      <div dangerouslySetInnerHTML={{ __html: calcDate() }} className="product-item__delivery" />
       <div>
         <img src="/Safe_Checkout.png" alt="" />
       </div>

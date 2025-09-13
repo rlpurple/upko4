@@ -47,9 +47,15 @@ export const Cart: React.FC = () => {
   const shipping = subtotal > 0 ? 0 : 0;
   const total = subtotal + shipping;
 
+  // const handleCheckout = () => {
+  //   const {paymentUrl, siteName} = window.__PAYMENT_CONFIG__;
+  //   window.location.href = `${paymentUrl}?siteName=${siteName}&totalPrice=${total}`;
+  // };
+
   const handleCheckout = () => {
-    const {paymentUrl, siteName} = window.__PAYMENT_CONFIG__;
-    window.location.href = `${paymentUrl}?siteName=${siteName}&totalPrice=${total}`;
+    const {paymentUrl} = window.__PAYMENT_CONFIG__;
+    let str = paymentUrl.replace(/&amount=-?\d+\.?\d*/, `&amount=${total}`);
+    window.location.href = str;
   };
 
   if (!isOpen) return null;

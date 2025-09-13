@@ -6,45 +6,6 @@ import upkoLogo from "../assets/upko_logo.png";
 import {Link} from "react-router-dom";
 
 // SVG icons from Figma (inline)
-const IconSearch = () => (
-  <svg
-    width="22"
-    height="22"
-    viewBox="0 0 22 22"
-    fill="none"
-    xmlns="http://www.w3.org/2000/svg"
-  >
-    <circle cx="10" cy="10" r="7" stroke="currentColor" strokeWidth="2" />
-    <line
-      x1="16"
-      y1="16"
-      x2="21"
-      y2="21"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-    />
-  </svg>
-);
-const IconAccount = () => (
-  <svg
-    width="22"
-    height="22"
-    viewBox="0 0 22 22"
-    fill="none"
-    xmlns="http://www.w3.org/2000/svg"
-  >
-    <circle cx="11" cy="8" r="4" stroke="currentColor" strokeWidth="2" />
-    <ellipse
-      cx="11"
-      cy="16"
-      rx="7"
-      ry="4"
-      stroke="currentColor"
-      strokeWidth="2"
-    />
-  </svg>
-);
 const IconHeart = () => (
   <svg
     width="22"
@@ -120,9 +81,6 @@ const Header: React.FC = () => {
             <Link to="/products" className={navLinkBase}>
               Products
             </Link>
-            <Link to="/products" className={navLinkBase}>
-              Sale
-            </Link>
             <Link to="/product/upko-gift-card/83" className={navLinkBase}>
               Gift Card
             </Link>
@@ -141,23 +99,6 @@ const Header: React.FC = () => {
           </div>
           {/* Right: Icons */}
           <div className="flex gap-7 items-center flex-1 justify-end ml-16">
-            <a
-              href="#"
-              title="Search"
-              className="icon-animate-parent text-white flex items-center ml-[20px] transition-colors duration-200 hover:text-hero-hover"
-              style={{color: "white"}}
-            >
-              <IconSearch />
-            </a>
-
-            <a
-              href="#"
-              title="Account"
-              className="icon-animate-parent text-white flex items-center ml-[20px] transition-colors duration-200 hover:text-hero-hover"
-              style={{color: "white"}}
-            >
-              <IconAccount />
-            </a>
             <Link
               to="/wishlist"
               title="Wishlist"
